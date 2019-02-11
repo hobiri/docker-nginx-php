@@ -86,6 +86,7 @@ RUN apk --no-cache add curl supervisor nginx php7 php7-fpm
 
 # Configure NginX
 # COPY etc/nginx/ /etc/nginx/
+RUN sed -i "s|user\s*nginx;|# user nobody;\npid /run/nginx.pid;|g" /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
 # COPY etc/php7/ /etc/php7/
