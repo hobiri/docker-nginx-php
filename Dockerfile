@@ -85,11 +85,10 @@ RUN apk --no-cache add curl supervisor nginx php7 php7-fpm
 #     php7-zmq \
 
 # Configure NginX
-# COPY etc/nginx/ /etc/nginx/
-RUN sed -i "s|user\s*nginx;|# user nobody;\npid /run/nginx.pid;|g" /etc/nginx/nginx.conf
+COPY etc/nginx/ /etc/nginx/
 
 # Configure PHP-FPM
-# COPY etc/php7/ /etc/php7/
+COPY etc/php7/ /etc/php7/
 
 # Configure supervisord
 COPY etc/supervisord.conf /etc/supervisord.conf
